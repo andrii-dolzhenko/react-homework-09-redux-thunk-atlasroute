@@ -348,6 +348,7 @@ For production Pixabay photography, configure `VITE_PIXABAY_API_KEY` in the depl
 
 - **Repository:** https://github.com/andrii-dolzhenko/react-homework-09-redux-thunk-atlasroute
 - **GitHub Pages:** https://andrii-dolzhenko.github.io/react-homework-09-redux-thunk-atlasroute/
+- **Vercel:** https://react-homework-09-redux-thunk-atlasroute-k0nbw4cof.vercel.app/
 
 ## Project Structure
 
