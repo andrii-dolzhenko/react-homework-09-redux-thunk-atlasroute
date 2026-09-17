@@ -139,7 +139,7 @@ My Atlas reuses the same country cache. On a direct reload with saved destinatio
 
 ## Recently Explored Countries
 
-The Home page now includes one new section directly after **Explore by region**.
+The Home page includes a **Recently Explored Countries** section directly after **Explore by region**.
 
 The section:
 
@@ -151,7 +151,6 @@ The section:
 - includes an empty state before any countries have been visited;
 - includes `Clear history` without affecting saved countries.
 
-No existing Home functionality or section order is changed apart from adding this new block after **Explore by region**.
 
 ## State Persistence
 
@@ -171,12 +170,6 @@ recentlyViewed.countries
 ```
 
 The store is hydrated with `preloadedState` and persisted through `store.subscribe()`.
-
-For a smooth migration from earlier Context-based builds, the persistence layer can also migrate the legacy key:
-
-```text
-atlasroute:preferences:v1
-```
 
 Stored data is validated and normalized before use. Malformed data falls back safely to Redux slice defaults.
 
@@ -307,7 +300,7 @@ npm test
 npm run build
 ```
 
-The existing source/dist validator guardrails remain in place, including the HTML rule that prevents XHTML-style trailing slashes on HTML void elements in generated/static HTML.
+The lint and build scripts also run lightweight source and production-output validation checks.
 
 Manual QA should also cover:
 
@@ -358,6 +351,9 @@ For production Pixabay photography, configure `VITE_PIXABAY_API_KEY` in the depl
     └── deploy-pages.yml
 src/
 ├── api/
+│   ├── countries.js
+│   ├── countryInsights.js
+│   └── media.js
 ├── assets/
 ├── components/
 │   ├── CountryDataLoader.jsx
@@ -374,6 +370,7 @@ src/
 ├── pages/
 ├── redux/
 │   ├── countriesSlice.js
+│   ├── countryInsightsSlice.js
 │   ├── persistence.js
 │   ├── preferencesSlice.js
 │   ├── recentlyViewedSlice.js
@@ -385,9 +382,10 @@ src/
 ├── router.jsx
 └── styles.css
 test/
-├── countries-data.test.js
-├── map-projection.test.js
 ├── countries-async.test.js
+├── countries-data.test.js
+├── country-insights.test.js
+├── map-projection.test.js
 ├── redux-persistence.test.js
 ├── redux-slices.test.js
 └── units.test.js
